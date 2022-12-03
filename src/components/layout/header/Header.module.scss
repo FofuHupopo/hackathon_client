@@ -1,0 +1,28 @@
+.headerWrapper {
+	background-color: #364F6B;
+	height: 60px;
+	max-width: 1200px;
+	margin: 25px auto;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	color: #fff;
+	padding: 0 45px;
+	font-size: 16px;
+	font-weight: 800;
+	
+	ul {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		
+		div {
+			display: flex;
+			
+			li {
+				padding-left: 15px;
+				cursor: pointer;
+			}
+		}
+	}
+}
