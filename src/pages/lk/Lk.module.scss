@@ -4,9 +4,28 @@
 }
 
 .content {
+display: flex;
+}
+
+.leftSidebar {
 	background-color: #3FC1C9;
 	width: 330px;
 	border-radius: 5px;
 	padding: 15px 17px;
 	height: max-content;
+	color: #fff;
+	font-size: 18px;
+	div {
+		text-align: center;
+	}
+	
+	.editInfo {
+		margin-top: 20px;
+		cursor: pointer;
+	}
+}
+
+.rightSidebar {
+	margin-left: 40px;
+	
 }

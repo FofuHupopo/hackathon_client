@@ -1,10 +1,15 @@
+import {useUnit} from "effector-react";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 import Header from "../../components/layout/header/Header";
-import { loginFormSubmit } from "../../effector/user/authorization";
+import {$isAuth, loginFormSubmit} from "../../effector/user/authorization";
 import styles from "./Login.module.scss";
 
 const Login: FC = () => {
+  
+  
+  
   const {
     register,
     handleSubmit,
@@ -17,6 +22,13 @@ const Login: FC = () => {
       password: data.password,
     });
   };
+  
+  const isAuth = useUnit($isAuth)
+  console.log(isAuth)
+  const navigate = useNavigate()
+  
+  if (isAuth) navigate('/lk')
+  
 
   return (
     <div>

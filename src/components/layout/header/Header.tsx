@@ -1,15 +1,21 @@
+import {useUnit} from "effector-react";
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import {$isAuth, logout} from "../../../effector/user/authorization";
 import styles from "./Header.module.scss";
 
 const Header: FC = () => {
+  
+  const isAuth = useUnit($isAuth)
+  
+  
   return (
     <div className={styles.headerWrapper}>
       <ul>
         <li>
           <Link to="/">Бронирование путевок</Link>
         </li>
-        <div>
+        {isAuth ? <div onClick={() => logout()}><li>Выход</li></div> :         <div>
           <li>
             <Link to="/login">Вход</Link>
           </li>
@@ -17,6 +23,7 @@ const Header: FC = () => {
             <Link to="/registration">Регистрация</Link>
           </li>
         </div>
+}
       </ul>
     </div>
   );

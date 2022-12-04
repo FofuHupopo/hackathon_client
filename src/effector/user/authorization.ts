@@ -32,11 +32,15 @@ export const loginFx = createEffect<ILoginData, IUser, Error>(
   }
 );
 
+const $password = createStore('').on(registrationFormSubmit, (_, user) => user.password)
+
+
+
 export const registrationFx = createEffect<IRegistratinData, IFullUser, Error>(
   async (registrationFormData) => {
     try {
+      //@ts-ignore
       const response = await AuthService.registration(registrationFormData);
-
       return response.data;
     } catch (e: any) {
       if (e.response.status === 400) {
@@ -86,6 +90,8 @@ forward({
   to: registrationFx,
 });
 
+
+
 forward({
   from: loginFormSubmit,
   to: loginFx,
@@ -115,6 +121,7 @@ export const $user = createStore<IFullUser>({
   .reset(checkAuthFx.failData)
   .reset(userNotAuthorized);
 
+
 export const $loadingUserData = createStore(true)
   .on(checkAuthFx.doneData, () => false)
   .on(checkAuthFx.failData, () => false);
@@ -125,12 +132,14 @@ sample({
   target: $loadingUserData,
 });
 
+
+
 sample({
   clock: registrationFx.doneData,
-  source: $user,
-  target: getTokenFx.prepend((user: IFullUser) => ({
+  source: {user: $user, password: $password},
+  target: getTokenFx.prepend(({user, password}: any) => ({
     email: user.email || "",
-    password: user.password || "",
+    password: password || "",
   })),
 });
 

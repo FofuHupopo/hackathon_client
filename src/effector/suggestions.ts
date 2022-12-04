@@ -5,14 +5,18 @@ import { API_URL } from "../http";
 export const getCountrySuggestionsFx = createEffect<string, string[]>(
   async (string: string) => {
     try {
-      const response = await axios.get(`${API_URL}/`);
+      const response = await axios.get(`${API_URL}address/countries/`, {
+        params: {
+           search: string
+        }
+      });
 
       return response.data;
     } catch (e) {}
   }
 );
 
-export const $countrySuggestions = createStore<string[]>(["hello"]).on(
+export const $countrySuggestions = createStore<string[]>([]).on(
   getCountrySuggestionsFx.doneData,
   (_, suggestions) => suggestions
 );

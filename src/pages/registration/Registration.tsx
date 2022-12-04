@@ -1,13 +1,14 @@
 import { useUnit } from "effector-react/effector-react.umd";
 import { ChangeEvent, FC, useState } from "react";
 import { useForm } from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 import Select from "react-select";
 import Header from "../../components/layout/header/Header";
 import {
   $countrySuggestions,
   getCountrySuggestionsFx,
 } from "../../effector/suggestions";
-import { registrationFormSubmit } from "../../effector/user/authorization";
+import {$isAuth, registrationFormSubmit} from "../../effector/user/authorization";
 import { IRegistratinData } from "../../types/types";
 import styles from "./Registration.module.scss";
 
@@ -33,6 +34,10 @@ const Registration = () => {
       label: "Организация",
     },
   ];
+  const navigate = useNavigate()
+  const isAuth = useUnit($isAuth)
+  
+  if (isAuth) navigate('/lk')
 
   const getRole = () =>
     role ? registrationOptions.find((regRole) => regRole.value === role) : "";
@@ -46,14 +51,15 @@ const Registration = () => {
       const formData = {
         username: data.username,
         email: data.email,
-        surname: data.surname,
-        name: data.name,
+        lastname: data.lastname,
+        firstname: data.firstname,
         patronymic: data.patronymic,
         phone: data.phone,
         password: data.password,
         role: role,
+        citizenship: country
       };
-
+      
       registrationFormSubmit(formData);
     } else {
       alert("Пароли не совпадают.");

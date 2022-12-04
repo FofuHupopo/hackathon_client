@@ -18,26 +18,30 @@ export default class AuthService {
   static async registration({
     email,
     password,
-    name,
-    surname,
+    firstname,
+    lastname,
     phone,
     patronymic,
     role,
+    citizenship,
+    username
   }) {
-    return axios.post(`${API_URL}auth/create-user/`, {
-      surname,
-      name,
+    return axios.post(`${API_URL}auth/registration/`, {
+      lastname,
+      firstname,
+      username,
       patronymic,
       email,
       phone,
       password,
       role,
+      citizenship
     });
   }
 
   static async getToken({ email, password }) {
     return $api.post("/auth/token/", {
-      email,
+      username: email,
       password,
     });
   }
