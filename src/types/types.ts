@@ -23,8 +23,9 @@ export interface IFullUser {
   refreshToken?: string;
   avatar?: string;
   documents?: string[];
-  firstname?: string,
-  lastname?: string
+  firstname?: string;
+  lastname?: string;
+  email_confirmed?: string;
 }
 
 export interface IZone {
@@ -72,7 +73,7 @@ export interface IRegistratinData {
   password: string;
   role: string;
   resetPassword?: string;
-  citizenship?: string
+  citizenship?: string;
 }
 
 export interface IChangePassword {

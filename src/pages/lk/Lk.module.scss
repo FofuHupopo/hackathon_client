@@ -11,7 +11,7 @@ display: flex;
 	background-color: #3FC1C9;
 	width: 330px;
 	border-radius: 5px;
-	padding: 15px 17px;
+	padding: 5px 17px 25px 17px;
 	height: max-content;
 	color: #fff;
 	font-size: 18px;
@@ -20,12 +20,54 @@ display: flex;
 	}
 	
 	.editInfo {
-		margin-top: 20px;
+		text-decoration: underline;
 		cursor: pointer;
+		
+		&:not(first-child) {
+			margin-top: 20px;
+		}
 	}
 }
 
 .rightSidebar {
 	margin-left: 40px;
-	
+	flex: 1 1;
+}
+
+.getCode {
+	display: flex;
+	width: 500px;
+	justify-content: space-between;
+	height: 40px;
+}
+
+.codeBtn {
+	padding: 0 10px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background-color: #354E6B;
+	border-radius: 5px;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.submit {
+	background-color: #364F6B;
+	color: #fff;
+	margin-top: 20px;
+	cursor: pointer;
+}
+.inputSubmit {
+		display: block;
+		width: 100%;
+		height: 40px;
+		border-radius: 3px;
+		border: 1px solid #364F6B;
+		padding: 0 20px;
+		box-sizing: border-box;
+		outline: none;
+		margin-bottom: 20px;
 }

@@ -1,13 +1,21 @@
-import {FC, useEffect} from "react";
+import { useUnit } from "effector-react";
+import { FC, useEffect } from "react";
 import Camps from "../../components/camps/Camps";
 import Filters from "../../components/filters/Filters";
 import Header from "../../components/layout/header/Header";
-import {getCampsFx} from "../../effector/camps";
+import { $camps, getCampsFx } from "../../effector/camps";
+import { getChildsFx } from "../../effector/lk/parent";
+import { getRequests } from "../../effector/lk/requests";
 import styles from "./Home.module.scss";
 
 export const Home: FC = () => {
-  
-  
+  useEffect(() => {
+    getChildsFx();
+    getRequests();
+  }, []);
+
+  const camps = useUnit($camps);
+
   return (
     <div className={styles.wrapper}>
       <Header />
@@ -18,7 +26,8 @@ export const Home: FC = () => {
             Оздоровительные лагеря в Оренбургской области
           </h2>
           <div>
-            Найдено <span className={styles.campsCount}>15</span> лагерей
+            Найдено <span className={styles.campsCount}>{camps.length}</span>{" "}
+            лагерей
           </div>
           <Camps />
         </div>

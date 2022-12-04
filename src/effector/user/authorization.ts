@@ -13,6 +13,7 @@ import {
 } from "../../types/types";
 import AuthService from "../../services/AuthService";
 import UserServices from "../../services/UserServices";
+import { sendCode, sendParentInfoFx } from "../lk/parent";
 
 export const registrationFormSubmit = createEvent<IRegistratinData>();
 export const loginFormSubmit = createEvent<ILoginData>();
@@ -32,9 +33,10 @@ export const loginFx = createEffect<ILoginData, IUser, Error>(
   }
 );
 
-const $password = createStore('').on(registrationFormSubmit, (_, user) => user.password)
-
-
+const $password = createStore("").on(
+  registrationFormSubmit,
+  (_, user) => user.password
+);
 
 export const registrationFx = createEffect<IRegistratinData, IFullUser, Error>(
   async (registrationFormData) => {
@@ -90,8 +92,6 @@ forward({
   to: registrationFx,
 });
 
-
-
 forward({
   from: loginFormSubmit,
   to: loginFx,
@@ -117,10 +117,10 @@ export const $user = createStore<IFullUser>({
   .on(registrationFx.doneData, (_, user) => user)
   .on(checkAuthFx.doneData, (_, user) => user)
   .on(loginFx.doneData, (_, user: any) => user?.user)
+  .on(sendCode.doneData, (_, user) => user)
   .reset(logout)
   .reset(checkAuthFx.failData)
   .reset(userNotAuthorized);
-
 
 export const $loadingUserData = createStore(true)
   .on(checkAuthFx.doneData, () => false)
@@ -132,12 +132,10 @@ sample({
   target: $loadingUserData,
 });
 
-
-
 sample({
   clock: registrationFx.doneData,
-  source: {user: $user, password: $password},
-  target: getTokenFx.prepend(({user, password}: any) => ({
+  source: { user: $user, password: $password },
+  target: getTokenFx.prepend(({ user, password }: any) => ({
     email: user.email || "",
     password: password || "",
   })),

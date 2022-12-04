@@ -1,0 +1,55 @@
+.wrapper {
+	display: flex;
+}
+
+.input {
+		display: block;
+		width: 100%;
+		height: 40px;
+		border-radius: 3px;
+		border: 1px solid #364F6B;
+		padding: 0 20px;
+		box-sizing: border-box;
+		outline: none;
+		margin-bottom: 20px;
+		margin-top: 5px;
+}
+
+.inputSubmit {
+		display: block;
+		width: 100%;
+		height: 40px;
+		border-radius: 3px;
+		border: 1px solid #364F6B;
+		padding: 0 20px;
+		box-sizing: border-box;
+		outline: none;
+		margin-bottom: 20px;
+}
+
+.getCode {
+	display: flex;
+	width: 350px;
+	justify-content: space-between;
+	height: 40px;
+}
+
+.codeBtn {
+	padding: 0 10px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background-color: #354E6B;
+	border-radius: 5px;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.submit {
+	background-color: #364F6B;
+	color: #fff;
+	margin-top: 20px;
+	cursor: pointer;
+}

@@ -1,6 +1,6 @@
 .campWrapper {
 	border: 1px solid #ccc;
-	height: 190px;
+//	height: 190px;
 	width: 100%;
 	border-radius: 5px;
 	padding: 15px;
@@ -29,10 +29,15 @@
 }
 
 .bookingBtns {
+	display: flex;
+	align-items: center;
+	div {
+		margin-right: 30px;
+	}
 	
 	button {
 		height: 40px;
-		width: 150px;
+		width: 200px;
 		border-radius: 3px;
 		font-weight: 500;
 		color: #ffffff;
@@ -50,6 +55,7 @@
 
 .bookingCamp {
 	margin-top: 17px;
+	margin-bottom: 17px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
