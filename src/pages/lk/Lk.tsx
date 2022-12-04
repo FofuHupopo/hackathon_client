@@ -34,7 +34,9 @@ const Lk: FC = () => {
             Личная информация
           </div>}
           {activeTab === 1 && <div>
-            <div style={{fontSize: 20}}>Список детей</div>
+            <div><div style={{fontSize: 20}}>Добавление ребенка</div>
+              <input type="text" placeholder="Имя"/>
+            </div>
             <div>
               {kids.map((kid: any) => <li>{kid.firstname}</li>)}
             </div>

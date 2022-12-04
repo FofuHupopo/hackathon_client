@@ -1,20 +1,60 @@
 import { FC } from "react";
 import styles from "./Camp.module.scss";
 
-const Camp: FC = () => {
+
+interface CampProps {
+  title: string,
+  camping_type: string,
+  season: string
+}
+
+
+const Camp: FC<CampProps> = ({title, camping_type, season}) => {
+  
+  let type = ''
+  let time = ''
+  
+  switch (camping_type) {
+    case 'stationary':
+      type = 'Стационарный'
+      break
+    case 'militaryPatriotic':
+      type = 'Палаточный военно-патриотический лагерь'
+      break
+    case 'tourist':
+      type = 'Палаточный туристический лагерь'
+      break
+  }
+  
+    switch (season) {
+    case 'winter':
+      time = 'Зимние заезды'
+      break
+    case 'spring':
+      time = 'Весенние заезды'
+      break
+    case 'summer':
+      time = 'Летние заезды'
+      break
+      case 'fall':
+      time = "Осенние заезды"
+      break
+  }
+  
+  
   return (
     <div className={styles.campWrapper}>
       <div className={styles.campTitle}>
-        с 03 по 09 января 2020 года (7 дней) профильный лагерь «РДШ»
+        {title}
       </div>
       <div className={styles.campDescr}>
         Россия, 191014, Санкт-Петербург, ст.м. Чернышевская, ул.Парадная, д.3,
         к.2.Литер А , помещение 217Н
       </div>
       <ul>
-        <li>Время года: “Зимние звезды”</li>
-        <li>Название смены: “Педики”</li>
-        <li>Тип лагеря: “Палаточный”</li>
+        <li>Время года: {time}</li>
+        <li>Название смены: “Лютики”</li>
+        <li>Тип лагеря: {type}</li>
       </ul>
       <div className={styles.bookingCamp}>
         <div className={styles.bookingBtns}>

@@ -1,5 +1,6 @@
-import { ChangeEvent, FC, useState } from "react";
+import {ChangeEvent, FC, useEffect, useState} from "react";
 import Select from "react-select";
+import {getCampsFx} from "../../effector/camps";
 import styles from "./Filters.module.scss";
 
 const Filters: FC = () => {
@@ -23,6 +24,13 @@ const Filters: FC = () => {
     { value: "summer", label: "Летние заезды" },
     { value: "autumn", label: "Осенние заезды" },
   ];
+  
+  useEffect(() => {
+    getCampsFx({time: campTime, start: startDate, type: campType, end: endDate})
+  }, [campType, campTime, startDate, endDate])
+  
+  
+  
 
   const typeOptions = [
     { value: "stationary", label: "Стационарный лагерь" },

@@ -15,7 +15,10 @@ const Header: FC = () => {
         <li>
           <Link to="/">Бронирование путевок</Link>
         </li>
-        {isAuth ? <div onClick={() => logout()}><li>Выход</li></div> :         <div>
+        {isAuth ? <div>
+          <div onClick={() => logout()}><li>Выход</li></div>
+          <div><Link to="/lk"><li>Личный кабинет</li></Link></div>
+        </div> :         <div>
           <li>
             <Link to="/login">Вход</Link>
           </li>

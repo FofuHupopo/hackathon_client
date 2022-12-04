@@ -1,10 +1,13 @@
-import { FC } from "react";
+import {FC, useEffect} from "react";
 import Camps from "../../components/camps/Camps";
 import Filters from "../../components/filters/Filters";
 import Header from "../../components/layout/header/Header";
+import {getCampsFx} from "../../effector/camps";
 import styles from "./Home.module.scss";
 
 export const Home: FC = () => {
+  
+  
   return (
     <div className={styles.wrapper}>
       <Header />
