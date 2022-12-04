@@ -1,0 +1,62 @@
+.campWrapper {
+	border: 1px solid #ccc;
+	height: 190px;
+	width: 100%;
+	border-radius: 5px;
+	padding: 15px;
+	-webkit-box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+	-moz-box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+	box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+	margin-bottom: 25px;
+	
+	ul {
+		display: flex;
+		justify-content: space-between;
+		font-size: 16px;
+		font-weight: 400;
+		margin-top: 10px;
+	}
+}
+
+.campTitle {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.campDescr {
+	font-size: 16px;
+	margin-top: 10px;
+}
+
+.bookingBtns {
+	
+	button {
+		height: 40px;
+		width: 150px;
+		border-radius: 3px;
+		font-weight: 500;
+		color: #ffffff;
+		margin-right: 20px;
+	}
+	
+	.blue {
+		background-color: #364F6B;
+	}
+	
+	.ocean {
+		background-color: #3FC1C9;
+	}
+}
+
+.bookingCamp {
+	margin-top: 17px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+}
+
+.campPrice {
+	font-size: 18px;
+	font-weight: 500;
+}

@@ -1,8 +1,6 @@
-import { addDays } from "date-fns";
 import { ChangeEvent, FC, useState } from "react";
 import Select from "react-select";
 import styles from "./Filters.module.scss";
-import DatePicker from "react-datepicker";
 
 const Filters: FC = () => {
   const [campTime, setCampTime] = useState("");
@@ -68,6 +66,8 @@ const Filters: FC = () => {
     setCampType(newValue.value);
   };
 
+  console.log(endDate);
+
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.filtersTitle}>Фильтры</h1>
@@ -84,7 +84,7 @@ const Filters: FC = () => {
       <div className={styles.filter}>
         <h2>Тип лагеря: </h2>
         <Select
-          options={campTime === "summer" ? summerTypeOptions : typeOptions}
+          options={typeOptions}
           value={getType()}
           onChange={onTypeChange}
           isDisabled={

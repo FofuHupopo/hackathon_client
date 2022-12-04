@@ -11,10 +11,10 @@ const Header: FC = () => {
         </li>
         <div>
           <li>
-            <Link to="/">Вход</Link>
+            <Link to="/login">Вход</Link>
           </li>
           <li>
-            <Link to="/">Регистрация</Link>
+            <Link to="/registration">Регистрация</Link>
           </li>
         </div>
       </ul>
